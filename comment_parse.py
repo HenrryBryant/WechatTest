@@ -1,28 +1,20 @@
-# coding:utf-8
+def get_text(url):
+    import xml.dom.minidom
+    dom = xml.dom.minidom.parse(url)
+    root=dom.documentElement
+    comment = root.getElementsByTagName('d')
+    tList=[]
+    for ele in comment:
+        tList.append(ele.firstChild.data)
 
-def getText():
-    import itchat
-    import re
-
-    itchat.login()
-    friends = itchat.get_friends(update=True)[0:]
-    tList = []
-    for i in friends:
-        signature = i["Signature"].replace(" ", "").replace("span", "").replace("class", "").replace("emoji", "")
-        rep = re.compile("1f\d.+")
-        signature = rep.sub("", signature)
-        tList.append(signature)
     # 拼接字符串
     text = "".join(tList)
-
-
+    print(text)
     # jieba分词
     import jieba
     wordlist_jieba = jieba.cut(text, cut_all=True)
     wl_space_split = " ".join(wordlist_jieba)
-    itchat.logout()
     return wl_space_split
-
 
 def wordCloud(wordlist):
     # wordcloud词云
@@ -42,8 +34,13 @@ def wordCloud(wordlist):
     plt.axis("off")
     plt.show()
 
-def parseSignature():
-    wl=getText()
+
+
+if __name__ == '__main__':
+    url='/Users/henry/【Live】萌德Shawn Mendes最新多伦多表演Never Be Alone.cmt.xml'
+    wl=get_text(url)
     wordCloud(wl)
 
-parseSignature()
+
+
+
