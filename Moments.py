@@ -14,6 +14,7 @@ def getText():
         tList.append(signature)
     # 拼接字符串
     text = "".join(tList)
+    print(text)
 
 
     # jieba分词

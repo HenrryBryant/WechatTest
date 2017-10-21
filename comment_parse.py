@@ -1,3 +1,4 @@
+import os
 def get_text(url):
     import xml.dom.minidom
     dom = xml.dom.minidom.parse(url)
@@ -37,7 +38,8 @@ def wordCloud(wordlist):
 
 
 if __name__ == '__main__':
-    url='/Users/henry/【Live】萌德Shawn Mendes最新多伦多表演Never Be Alone.cmt.xml'
+    d = os.path.dirname(os.path.abspath(__file__))
+    url=os.path.join(d,'【Live】萌德Shawn Mendes最新多伦多表演Never Be Alone.cmt.xml')
     wl=get_text(url)
     wordCloud(wl)
 
