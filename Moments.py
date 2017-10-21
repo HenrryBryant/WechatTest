@@ -34,7 +34,8 @@ def wordCloud(wordlist):
     import PIL.Image as Image
 
     d= os.path.dirname(os.path.abspath( __file__ ))
-    alice_coloring = np.array(Image.open(os.path.join(d, "wechat.png")))
+    alice_coloring = np.array(Image.open(os.path.join(d, "xi.png")))
+    print(alice_coloring)
     my_wordcloud = WordCloud(background_color="white", max_words=2000,mask=alice_coloring,max_font_size=400, random_state=420,
                              font_path="/Users/henry/Documents/Internship/WechatTest/simsun.ttf").generate(wordlist)
     image_colors = ImageColorGenerator(alice_coloring)

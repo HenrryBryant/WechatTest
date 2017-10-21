@@ -6,14 +6,17 @@ def get_text(url):
     comment = root.getElementsByTagName('d')
     tList=[]
     for ele in comment:
-        tList.append(ele.firstChild.data)
+        try:
+            tList.append(ele.firstChild.data)
+        except AttributeError:
+            print(ele.firstChild)
 
     # 拼接字符串
     text = "".join(tList)
-    print(text)
+
     # jieba分词
     import jieba
-    wordlist_jieba = jieba.cut(text, cut_all=True)
+    wordlist_jieba = jieba.cut(text, cut_all=False)
     wl_space_split = " ".join(wordlist_jieba)
     return wl_space_split
 
@@ -39,7 +42,7 @@ def wordCloud(wordlist):
 
 if __name__ == '__main__':
     d = os.path.dirname(os.path.abspath(__file__))
-    url=os.path.join(d,'【Live】萌德Shawn Mendes最新多伦多表演Never Be Alone.cmt.xml')
+    url=os.path.join(d,'【戳爷帅炸】你们要的来了～戳爷最新MV《wild》全网首播基情满满～迷妹迷弟们不要太激动哦！@油兔不二字幕组.cmt.xml')
     wl=get_text(url)
     wordCloud(wl)
 
