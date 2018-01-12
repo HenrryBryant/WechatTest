@@ -196,7 +196,7 @@ def save_to_file(list,filename):
 
 if __name__ == "__main__":
     start_time = time.time() # 开始时间
-    url = "http://music.163.com/weapi/v1/resource/comments/R_SO_4_26508186/?csrf_token="
+    url = "http://music.163.com/weapi/v1/resource/comments/R_SO_4_515803379/?csrf_token="
     filename = u"/Users/henry/Desktop/天空之城.txt"
     (all_comments_list,comment_list) = get_all_comments(url)
     save_to_file(all_comments_list,filename)
